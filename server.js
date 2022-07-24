@@ -38,7 +38,6 @@ app.use(function (req, res, next) {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(passport.initialize());
 
 const Assurance = require("./routes/Assurance");
 app.use("/", Assurance);
