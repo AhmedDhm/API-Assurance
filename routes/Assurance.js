@@ -7,6 +7,6 @@ const AssuranceController = require('../controllers/AssuranceController')
  */
 
  router.post("/create",AssuranceController.addInfo);
- router.get("/:idclient",AssuranceController.getClientInfo);
+ router.get("/:refclient",AssuranceController.getClientInfo);
 
  module.exports = router;
