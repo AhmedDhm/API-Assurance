@@ -43,20 +43,6 @@ const Assurance = require("./routes/Assurance");
 app.use("/assurance", Assurance);
 
 
-if (process.env.NODE_ENV === "production") {
-  console.log("app in production mode");
-  app.use(express.static("client/build"));
-
-  app.get("/*", function (req, res) {
-    res.sendFile(
-      path.join(__dirname, "client", "build", "index.html"),
-      function (err) {
-        if (err) res.status(500).send(err);
-      }
-    );
-  });
-}
-
 var server = app.listen(port, () => {
   console.log(`Server up and running on port ${port} !`);
   
