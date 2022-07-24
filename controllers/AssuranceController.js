@@ -36,7 +36,7 @@ module.exports = {
     },
 
     getClientInfo : async(req,res) => {
-        const refclient = req.params
+        const refclient = req.params.refclient
 
         try {
             const client = await Assurance.find({refClient : refclient})
