@@ -39,13 +39,32 @@ module.exports = {
         const refclient = req.params.refclient
 
         try {
-            const client = await Assurance.find({refClient : refclient})
+            const client = await Assurance.findOne({refClient : refclient})
             if (client){
                 return res.status(203).json(client)   
             }else {
                 return res.status(404).send({
                     success: false,
-                    message: "ref client not found!"                })
+                    message: "ref client not found!"})
+            }
+        } catch (error) {
+            return res.status(400).send({
+                success: false,
+                message: error
+            })
+        }
+    },
+    getClientInfoByNumContrat : async(req,res) => {
+        const numContrat = req.params.numcontrat
+
+        try {
+            const client = await Assurance.findOne({numContrat : numContrat})
+            if (client){
+                return res.status(203).json(client)   
+            }else {
+                return res.status(404).send({
+                    success: false,
+                    message: "client not found!"})
             }
         } catch (error) {
             return res.status(400).send({
