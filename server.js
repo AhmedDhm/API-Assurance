@@ -3,16 +3,18 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 9810;
 
 
 const config = require("./config/DB");
 const bodyParser = require("body-parser");
 var path = require("path");
+const logger = require("morgan");
 
 app.use(express.static(path.join(__dirname, "uploads")));
 app.use("/uploads", express.static("./uploads"));
 
+app.use(logger("dev"));
 
 
 //MongoDB Connnection
@@ -45,5 +47,5 @@ app.use("/assurance", Assurance);
 
 var server = app.listen(port, () => {
   console.log(`Server up and running on port ${port} !`);
-  
+
 });
